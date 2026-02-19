@@ -1,7 +1,12 @@
 import axios from 'axios';
 
-// Get API base URL from environment variable, default to common backend port
-const API_BASE_URL = process.env.REACT_APP_API_BASE_URL || 'http://localhost:51348';
+// Get API base URL from environment variable
+// Production: https://ezapiplayground.onrender.com
+// Development: http://localhost:51348
+const API_BASE_URL = process.env.REACT_APP_API_BASE_URL || 
+  (process.env.NODE_ENV === 'production' 
+    ? 'https://ezapiplayground.onrender.com' 
+    : 'http://localhost:51348');
 
 // Create axios instance with default config
 const apiClient = axios.create({
